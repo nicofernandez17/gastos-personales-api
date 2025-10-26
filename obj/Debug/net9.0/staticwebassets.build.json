@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "DQiFfsZkDCVYEZm4FSAdmj8KaP787enOZpShVY2fQX8=",
+  "Source": "GastosPersonalesApi",
+  "BasePath": "_content/GastosPersonalesApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
