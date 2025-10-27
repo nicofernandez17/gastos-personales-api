@@ -12,8 +12,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>r8czpvfh95</Fingerprint>
-      <Integrity>RRJbTvlCw6f3555D6zZ7CfcS/CNIfHXs/jIEPodFONE=</Integrity>
+      <Fingerprint>1xljwrpb5e</Fingerprint>
+      <Integrity>S04MFpuJSTisFmjnV+ayi/x/4V4nqbERR70lbpG355Q=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\style.css'))</OriginalItemSpec>
@@ -48,8 +48,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>1d990ybui1</Fingerprint>
-      <Integrity>pY+Hk/AyaiEyfVOqLmWZjkVt6By1aMO//v3w+iNQrK8=</Integrity>
+      <Fingerprint>y1vw9ciuej</Fingerprint>
+      <Integrity>yqHtxjsIxfzMEE+mvaJCl9belLROb95+J/t5zS9grc0=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\index.html'))</OriginalItemSpec>
@@ -66,11 +66,29 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>4eyg6f5a02</Fingerprint>
-      <Integrity>HETHHCya0wR7/7SsmIdspCtvD7/bl7yBXL+LWipp8+M=</Integrity>
+      <Fingerprint>xwm9kkdxwb</Fingerprint>
+      <Integrity>QVAy7SN0vFggtvQmKzIqS1di1R/dBSh6dAusI2bltLk=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\app.js'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\navbar.html'))">
+      <SourceType>Package</SourceType>
+      <SourceId>GastosPersonalesApi</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/GastosPersonalesApi</BasePath>
+      <RelativePath>navbar.html</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>j6ec0rqc50</Fingerprint>
+      <Integrity>y75/0K+KXwwsFthHxjNdfTLpN77AkT976zx8oFrHHj8=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\navbar.html'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\usuario.html'))">
       <SourceType>Package</SourceType>
@@ -84,8 +102,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>k93e7hg0g1</Fingerprint>
-      <Integrity>CFMnDiSnbct4NhBOWO3ewxK9ld2N1AfV65eCahMCvZU=</Integrity>
+      <Fingerprint>rskav4v65i</Fingerprint>
+      <Integrity>Nfl9fTGhVnL7AVO6u6S6qBcmKOx4XTCpScL9f6xRN7A=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\usuario.html'))</OriginalItemSpec>

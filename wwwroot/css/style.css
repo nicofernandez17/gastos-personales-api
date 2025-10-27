@@ -1,39 +1,40 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap');
+/* ======== Fuente y reset ======== */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
 
-/* ======== Estilo Retro Minimalista ======== */
 body {
-    background-color: #f4f1de;
-    color: #3d405b;
-    font-family: 'IBM Plex Mono', monospace;
+    background-color: #f8f9fa; /* fondo gris muy claro */
+    color: #212529;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
 }
 
-/* NAVBAR */
+/* ======== NAVBAR ======== */
 .retro-navbar {
-    background-color: #e07a5f;
-    color: #f4f1de;
+    background-color: #ffd700; /* amarillo */
+    color: #212529;
     font-weight: bold;
     padding: 10px 15px;
 }
 .retro-navbar a {
-    color: #f4f1de;
+    color: #212529;
     text-decoration: none;
+    font-weight: 500;
 }
 .retro-navbar a:hover {
     text-decoration: underline;
 }
 
-/* TARJETAS */
-.retro-card {
-    background-color: #fff;
-    border: 2px solid #e07a5f;
+/* ======== TARJETAS ======== */
+.retro-card, .card {
+    background-color: #ffffff;
+    border: 2px solid #ffd700;
     border-radius: 8px;
     margin-bottom: 15px;
 }
 .card-header {
-    background-color: #e07a5f;
-    color: #f4f1de;
-    font-weight: bold;
+    background-color: #ffd700;
+    color: #212529;
+    font-weight: 500;
     padding: 8px 12px;
 }
 
@@ -45,86 +46,53 @@ body {
 }
 
 /* BOTONES */
-.btn-warning {
-    background-color: #e07a5f;
-    border: none;
-    color: #f4f1de;
-    font-weight: bold;
+.btn-primary, .btn-success, .btn-warning {
+    background-color: #ffd700 !important;
+    color: #212529 !important;
+    font-weight: 500;
+    border: none !important;
 }
-.btn-warning:hover {
-    background-color: #d96b50;
+.btn-primary:hover, .btn-success:hover, .btn-warning:hover {
+    background-color: #e6c200 !important;
+    color: #212529 !important;
 }
 
 /* INPUTS Y TABLAS */
-.form-control, .table {
-    background-color: #fff;
-    color: #3d405b;
-    border: 1px solid #e07a5f;
+.form-control {
+    background-color: #ffffff;
+    color: #212529;
+    border: 1px solid #ffd700;
+    border-radius: 4px;
 }
 .form-control:focus {
-    border-color: #3d405b;
-    box-shadow: 0 0 4px rgba(61, 64, 91, 0.3);
+    border-color: #212529;
+    box-shadow: 0 0 4px rgba(33,37,41,0.2);
+}
+
+.table {
+    background-color: #ffffff;
+    color: #212529;
+    border: none;
 }
 .table-striped tbody tr:nth-child(odd) {
-    background-color: #f4f1de;
+    background-color: #f1f3f5;
 }
 
 /* LISTA DE USUARIOS */
 .list-group-item {
-    background-color: #fff;
-    color: #3d405b;
-    border: 1px solid #e07a5f;
+    background-color: #ffffff;
+    color: #212529;
+    border: 1px solid #ffd700;
     transition: 0.2s;
 }
 .list-group-item:hover {
-    background-color: #f4f1de;
+    background-color: #f1f3f5;
 }
 .list-group-item a {
     text-decoration: none;
-    color: #e07a5f;
-    font-weight: bold;
+    color: #212529;
+    font-weight: 500;
 }
 .list-group-item a:hover {
-    color: #3d405b;
-}
-
-/* ======== PESTAÑAS (Lista / Agregar) ======== */
-.nav-tabs {
-    border-bottom: 2px solid #e07a5f;
-}
-.nav-tabs .nav-link {
-    color: #3d405b;
-    border: 1px solid transparent;
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
-    font-weight: bold;
-    background-color: #f4f1de;
-    transition: 0.2s;
-}
-.nav-tabs .nav-link.active,
-.nav-tabs .nav-link:hover {
-    background-color: #e07a5f;
-    color: #f4f1de;
-    border: 1px solid #e07a5f;
-}
-
-/* --- Botones retro (reemplaza el azul Bootstrap) --- */
-.btn-primary {
-    background-color: #3d405b !important; /* mismo tono que la navbar */
-    border: none !important;
-    color: #f4f1de !important;
-    font-weight: bold;
-    transition: background-color 0.2s ease;
-}
-
-.btn-primary:hover {
-    background-color: #2f3248 !important; /* un poco más oscuro al pasar el mouse */
-    color: #fff !important;
-}
-
-/* Ajuste para botones dentro de listas */
-.list-group-item .btn {
-    padding: 4px 10px;
-    font-size: 0.9rem;
-    border-radius: 6px;
+    color: #e6c200;
 }

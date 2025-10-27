@@ -158,7 +158,8 @@ F:\Shared\GastosPersonalesApi\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspa
 F:\Shared\GastosPersonalesApi\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 F:\Shared\GastosPersonalesApi\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 F:\Shared\GastosPersonalesApi\bin\Debug\net9.0\GastosPersonalesApi.staticwebassets.runtime.json
-F:\Shared\GastosPersonalesApi\obj\Debug\net9.0\compressed\qbkijsv1q5-1d990ybui1.gz
-F:\Shared\GastosPersonalesApi\obj\Debug\net9.0\compressed\ork2ftcx3d-4eyg6f5a02.gz
-F:\Shared\GastosPersonalesApi\obj\Debug\net9.0\compressed\d59n1gqz70-r8czpvfh95.gz
-F:\Shared\GastosPersonalesApi\obj\Debug\net9.0\compressed\399pfuotu5-k93e7hg0g1.gz
+F:\Shared\GastosPersonalesApi\obj\Debug\net9.0\compressed\d59n1gqz70-1xljwrpb5e.gz
+F:\Shared\GastosPersonalesApi\obj\Debug\net9.0\compressed\cz7gdsi5z0-j6ec0rqc50.gz
+F:\Shared\GastosPersonalesApi\obj\Debug\net9.0\compressed\qbkijsv1q5-y1vw9ciuej.gz
+F:\Shared\GastosPersonalesApi\obj\Debug\net9.0\compressed\ork2ftcx3d-xwm9kkdxwb.gz
+F:\Shared\GastosPersonalesApi\obj\Debug\net9.0\compressed\399pfuotu5-rskav4v65i.gz
