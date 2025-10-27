@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\css\\style.css"
     },
     {
+      "Id": "F:\\Shared\\GastosPersonalesApi\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
       "Id": "F:\\Shared\\GastosPersonalesApi\\wwwroot\\index.html",
       "PackagePath": "staticwebassets\\index.html"
     },
