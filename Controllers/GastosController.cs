@@ -17,14 +17,7 @@ namespace GastosPersonalesApi.Controllers
             _context = context;
         }
 
-        [HttpGet]
-        public IActionResult GetAll()
-        {
-            var gastosDto = _context.Gastos
-                .Select(g => DtoMapper.ToDto(g))
-                .ToList();
-            return Ok(gastosDto);
-        }
+        
 
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
@@ -41,6 +34,23 @@ namespace GastosPersonalesApi.Controllers
             _context.Gastos.Add(entity);
             _context.SaveChanges();
             return CreatedAtAction(nameof(GetById), new { id = entity.Id }, DtoMapper.ToDto(entity));
+        }
+
+        [HttpGet]
+        public IActionResult GetAll([FromQuery] int? usuarioId)
+        {
+            var query = _context.Gastos.AsQueryable();
+
+            if (usuarioId.HasValue)
+            {
+                query = query.Where(g => g.UsuarioId == usuarioId.Value);
+            }
+
+            var gastosDto = query
+                .Select(g => DtoMapper.ToDto(g))
+                .ToList();
+
+            return Ok(gastosDto);
         }
 
         [HttpPut("{id}")]

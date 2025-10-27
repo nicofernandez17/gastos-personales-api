@@ -18,11 +18,19 @@ namespace GastosPersonalesApi.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAll()
+        public IActionResult GetAll([FromQuery] int? usuarioId)
         {
-            var ingresosDto = _context.Ingresos
+            var query = _context.Ingresos.AsQueryable();
+
+            if (usuarioId.HasValue)
+            {
+                query = query.Where(i => i.UsuarioId == usuarioId.Value);
+            }
+
+            var ingresosDto = query
                 .Select(i => DtoMapper.ToDto(i))
                 .ToList();
+
             return Ok(ingresosDto);
         }
 
