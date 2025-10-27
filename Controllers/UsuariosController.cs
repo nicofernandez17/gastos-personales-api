@@ -1,5 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
+using GastosPersonalesApi.Data;
+using GastosPersonalesApi.Dtos;
+using GastosPersonalesApi.Mappers;
 using GastosPersonalesApi.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace GastosPersonalesApi.Controllers
 {
@@ -7,51 +11,65 @@ namespace GastosPersonalesApi.Controllers
     [Route("api/[controller]")]
     public class UsuariosController : ControllerBase
     {
-        // Repositorio en memoria
-        private static readonly List<Usuario> usuarios = new()
+        private readonly AppDbContext _context;
+        public UsuariosController(AppDbContext context)
         {
-            new Usuario { Id = 1, Nombre = "Nicolás", Email = "nico@email.com" },
-            new Usuario { Id = 2, Nombre = "Carlos", Email = "carlos@email.com" }
-        };
+            _context = context;
+        }
 
         [HttpGet]
-        public IActionResult GetAll() => Ok(usuarios);
+        public IActionResult GetAll()
+        {
+            var usuariosDto = _context.Usuarios
+                .Include(u => u.Gastos)
+                .Include(u => u.Ingresos)
+                .Select(u => DtoMapper.ToDto(u))
+                .ToList();
+            return Ok(usuariosDto);
+        }
 
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            var usuario = usuarios.FirstOrDefault(u => u.Id == id);
+            var usuario = _context.Usuarios
+                .Include(u => u.Gastos)
+                .Include(u => u.Ingresos)
+                .FirstOrDefault(u => u.Id == id);
+
             if (usuario == null) return NotFound();
-            return Ok(usuario);
+            return Ok(DtoMapper.ToDto(usuario));
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] Usuario nuevo)
+        public IActionResult Create([FromBody] UsuarioDto dto)
         {
-            nuevo.Id = usuarios.Count > 0 ? usuarios.Max(u => u.Id) + 1 : 1;
-            usuarios.Add(nuevo);
-            return CreatedAtAction(nameof(GetById), new { id = nuevo.Id }, nuevo);
+            var entity = DtoMapper.ToEntity(dto);
+            _context.Usuarios.Add(entity);
+            _context.SaveChanges();
+            return CreatedAtAction(nameof(GetById), new { id = entity.Id }, DtoMapper.ToDto(entity));
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(int id, [FromBody] Usuario actualizado)
+        public IActionResult Update(int id, [FromBody] UsuarioDto dto)
         {
-            var usuario = usuarios.FirstOrDefault(u => u.Id == id);
+            var usuario = _context.Usuarios.Find(id);
             if (usuario == null) return NotFound();
 
-            usuario.Nombre = actualizado.Nombre;
-            usuario.Email = actualizado.Email;
+            usuario.Nombre = dto.Nombre;
+            usuario.Email = dto.Email;
 
+            _context.SaveChanges();
             return NoContent();
         }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var usuario = usuarios.FirstOrDefault(u => u.Id == id);
+            var usuario = _context.Usuarios.Find(id);
             if (usuario == null) return NotFound();
 
-            usuarios.Remove(usuario);
+            _context.Usuarios.Remove(usuario);
+            _context.SaveChanges();
             return NoContent();
         }
     }

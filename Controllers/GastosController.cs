@@ -1,5 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
+using GastosPersonalesApi.Data;
+using GastosPersonalesApi.Dtos;
+using GastosPersonalesApi.Mappers;
 using GastosPersonalesApi.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace GastosPersonalesApi.Controllers
 {
@@ -7,60 +11,60 @@ namespace GastosPersonalesApi.Controllers
     [Route("api/[controller]")]
     public class GastosController : ControllerBase
     {
-        private static readonly List<Gasto> gastos = new()
+        private readonly AppDbContext _context;
+        public GastosController(AppDbContext context)
         {
-            new Gasto { Id = 1, UsuarioId = 1, Monto = 5000, Categoria = "Comida", Fecha = DateTime.Now, Descripcion = "Cena con amigos" },
-            new Gasto { Id = 2, UsuarioId = 2, Monto = 2000, Categoria = "Transporte", Fecha = DateTime.Now, Descripcion = "Taxi" }
-        };
+            _context = context;
+        }
 
         [HttpGet]
-        public IActionResult GetAll() => Ok(gastos);
+        public IActionResult GetAll()
+        {
+            var gastosDto = _context.Gastos
+                .Select(g => DtoMapper.ToDto(g))
+                .ToList();
+            return Ok(gastosDto);
+        }
 
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            var gasto = gastos.FirstOrDefault(g => g.Id == id);
+            var gasto = _context.Gastos.Find(id);
             if (gasto == null) return NotFound();
-            return Ok(gasto);
-        }
-
-        [HttpGet("usuario/{usuarioId}")]
-        public IActionResult GetByUsuario(int usuarioId)
-        {
-            var userGastos = gastos.Where(g => g.UsuarioId == usuarioId).ToList();
-            return Ok(userGastos);
+            return Ok(DtoMapper.ToDto(gasto));
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] Gasto nuevo)
+        public IActionResult Create([FromBody] GastoDto dto)
         {
-            nuevo.Id = gastos.Count > 0 ? gastos.Max(g => g.Id) + 1 : 1;
-            gastos.Add(nuevo);
-            return CreatedAtAction(nameof(GetById), new { id = nuevo.Id }, nuevo);
+            var entity = DtoMapper.ToEntity(dto);
+            _context.Gastos.Add(entity);
+            _context.SaveChanges();
+            return CreatedAtAction(nameof(GetById), new { id = entity.Id }, DtoMapper.ToDto(entity));
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(int id, [FromBody] Gasto actualizado)
+        public IActionResult Update(int id, [FromBody] GastoDto dto)
         {
-            var gasto = gastos.FirstOrDefault(g => g.Id == id);
+            var gasto = _context.Gastos.Find(id);
             if (gasto == null) return NotFound();
 
-            gasto.UsuarioId = actualizado.UsuarioId;
-            gasto.Monto = actualizado.Monto;
-            gasto.Categoria = actualizado.Categoria;
-            gasto.Fecha = actualizado.Fecha;
-            gasto.Descripcion = actualizado.Descripcion;
+            gasto.Descripcion = dto.Descripcion;
+            gasto.Monto = dto.Monto;
+            gasto.UsuarioId = dto.UsuarioId;
 
+            _context.SaveChanges();
             return NoContent();
         }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var gasto = gastos.FirstOrDefault(g => g.Id == id);
+            var gasto = _context.Gastos.Find(id);
             if (gasto == null) return NotFound();
 
-            gastos.Remove(gasto);
+            _context.Gastos.Remove(gasto);
+            _context.SaveChanges();
             return NoContent();
         }
     }
