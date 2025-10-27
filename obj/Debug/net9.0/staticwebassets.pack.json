@@ -1,0 +1,41 @@
+{
+  "Files": [
+    {
+      "Id": "F:\\Shared\\GastosPersonalesApi\\wwwroot\\css\\style.css",
+      "PackagePath": "staticwebassets\\css\\style.css"
+    },
+    {
+      "Id": "F:\\Shared\\GastosPersonalesApi\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "F:\\Shared\\GastosPersonalesApi\\wwwroot\\js\\app.js",
+      "PackagePath": "staticwebassets\\js\\app.js"
+    },
+    {
+      "Id": "F:\\Shared\\GastosPersonalesApi\\wwwroot\\usuario.html",
+      "PackagePath": "staticwebassets\\usuario.html"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.GastosPersonalesApi.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.GastosPersonalesApi.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.build.GastosPersonalesApi.props",
+      "PackagePath": "build\\GastosPersonalesApi.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildMultiTargeting.GastosPersonalesApi.props",
+      "PackagePath": "buildMultiTargeting\\GastosPersonalesApi.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildTransitive.GastosPersonalesApi.props",
+      "PackagePath": "buildTransitive\\GastosPersonalesApi.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

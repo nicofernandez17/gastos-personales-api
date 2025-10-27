@@ -157,3 +157,8 @@ F:\Shared\GastosPersonalesApi\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.Workspa
 F:\Shared\GastosPersonalesApi\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 F:\Shared\GastosPersonalesApi\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 F:\Shared\GastosPersonalesApi\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+F:\Shared\GastosPersonalesApi\bin\Debug\net9.0\GastosPersonalesApi.staticwebassets.runtime.json
+F:\Shared\GastosPersonalesApi\obj\Debug\net9.0\compressed\d59n1gqz70-3v965rxdzr.gz
+F:\Shared\GastosPersonalesApi\obj\Debug\net9.0\compressed\qbkijsv1q5-cz73vcyo1g.gz
+F:\Shared\GastosPersonalesApi\obj\Debug\net9.0\compressed\ork2ftcx3d-kvgb2p9ykd.gz
+F:\Shared\GastosPersonalesApi\obj\Debug\net9.0\compressed\399pfuotu5-cuefe4pn3m.gz
