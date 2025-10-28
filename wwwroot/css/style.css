@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
 
 body {
-    background-color: #f8f9fa; /* fondo gris muy claro */
+    background-color: #f8f9fa;
     color: #212529;
     font-family: 'Roboto', sans-serif;
     margin: 0;
@@ -31,11 +31,23 @@ body {
     border-radius: 8px;
     margin-bottom: 15px;
 }
+
+/* Headers personalizados */
 .card-header {
-    background-color: #ffd700;
-    color: #212529;
     font-weight: 500;
     padding: 8px 12px;
+}
+
+/* Amarillo para formularios y tablas */
+.retro-yellow {
+    background-color: #ffd700;
+    color: #212529;
+}
+
+/* Negro para gráfico Distribución */
+.retro-black {
+    background-color: #212529;
+    color: #ffd700;
 }
 
 /* CUERPO SCROLLABLE */
@@ -45,16 +57,16 @@ body {
     padding: 10px;
 }
 
-/* BOTONES */
-.btn-primary, .btn-success, .btn-warning {
-    background-color: #ffd700 !important;
-    color: #212529 !important;
+/* BOTONES personalizados */
+.retro-btn-yellow {
+    background-color: #ffd700;
+    color: #212529;
     font-weight: 500;
-    border: none !important;
+    border: none;
 }
-.btn-primary:hover, .btn-success:hover, .btn-warning:hover {
-    background-color: #e6c200 !important;
-    color: #212529 !important;
+.retro-btn-yellow:hover {
+    background-color: #e6c200;
+    color: #212529;
 }
 
 /* INPUTS Y TABLAS */

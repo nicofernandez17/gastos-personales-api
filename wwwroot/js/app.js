@@ -204,7 +204,7 @@ document.getElementById("formGasto")?.addEventListener("submit", async (e) => {
         if (res.ok) {
             document.getElementById("descGasto").value = "";
             document.getElementById("montoGasto").value = "";
-            document.getElementById("categoriaGasto").value = "Alimentos";
+            document.getElementById("categoriaGasto").value = "Otro";
             // refrescar tabla y gráfico
             await fetchGastos(usuarioId);
         } else {

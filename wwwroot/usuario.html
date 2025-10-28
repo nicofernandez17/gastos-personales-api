@@ -23,8 +23,8 @@
         <!-- Columna izquierda: gráfico y tablas -->
         <div class="col-md-6">
             <!-- Gráfico -->
-            <div class="card mb-3" style="border: 2px solid #ffcd00;">
-                <div class="card-header" style="background-color: #ffcd00; color:#3d405b;">Distribución de Gastos</div>
+            <div class="card mb-3">
+                <div class="card-header retro-black">Distribución de Gastos</div>
                 <div class="card-body">
                     <canvas id="gastosChart"></canvas>
                 </div>
@@ -32,7 +32,7 @@
 
             <!-- Gastos -->
             <div class="card mb-3">
-                <div class="card-header bg-primary text-white">Gastos</div>
+                <div class="card-header retro-yellow">Gastos</div>
                 <div class="card-body p-2">
                     <table class="table table-striped mb-0" id="gastosTable">
                         <thead>
@@ -45,7 +45,7 @@
 
             <!-- Ingresos -->
             <div class="card mb-3">
-                <div class="card-header bg-warning text-dark">Ingresos</div>
+                <div class="card-header retro-yellow">Ingresos</div>
                 <div class="card-body p-2">
                     <table class="table table-striped mb-0" id="ingresosTable">
                         <thead>
@@ -61,7 +61,7 @@
         <div class="col-md-6">
             <!-- Agregar Gasto -->
             <div class="card mb-3">
-                <div class="card-header bg-primary text-white">Agregar Gasto</div>
+                <div class="card-header retro-yellow">Agregar Gasto</div>
                 <div class="card-body">
                     <form id="formGasto">
                         <input type="text" id="descGasto" placeholder="Descripción" class="form-control mb-2" required>
@@ -69,22 +69,23 @@
                         <select id="categoriaGasto" class="form-control mb-2" required>
                             <option value="Alimentos">Alimentos</option>
                             <option value="Transporte">Transporte</option>
+                            <option value="Hogar">Hogar</option>
                             <option value="Entretenimiento">Entretenimiento</option>
                             <option value="Otro">Otro</option>
                         </select>
-                        <button type="submit" class="btn btn-primary w-100">Agregar Gasto</button>
+                        <button type="submit" class="btn retro-btn-yellow w-100">Agregar Gasto</button>
                     </form>
                 </div>
             </div>
 
             <!-- Agregar Ingreso -->
             <div class="card">
-                <div class="card-header bg-warning text-dark">Agregar Ingreso</div>
+                <div class="card-header retro-yellow">Agregar Ingreso</div>
                 <div class="card-body">
                     <form id="formIngreso">
                         <input type="text" id="descIngreso" placeholder="Descripción" class="form-control mb-2" required>
                         <input type="number" id="montoIngreso" placeholder="Monto" class="form-control mb-2" required>
-                        <button type="submit" class="btn btn-warning w-100">Agregar Ingreso</button>
+                        <button type="submit" class="btn retro-btn-yellow w-100">Agregar Ingreso</button>
                     </form>
                 </div>
             </div>
