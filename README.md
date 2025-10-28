@@ -15,17 +15,6 @@ Cuenta con **DTOs** para evitar ciclos en JSON y un **Mapper** para convertir en
   - `/api/ingresos?usuarioId=1`  
 - Swagger para probar endpoints automáticamente.  
 
-## 🧾 Dashboard de Expens.io
-
-<p align="center">
-  <img src="https://github.com/nicofernandez17/gastos-personales-api/images/demo.png" 
-       alt="Dashboard de Expens.io" 
-       width="700">
-  <br>
-  <em>Vista principal del panel de control con gastos por categoría</em>
-</p>
-
-
 ---
 
 ## 🔹 Requisitos
