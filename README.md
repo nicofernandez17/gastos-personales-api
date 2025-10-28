@@ -9,13 +9,14 @@ Cuenta con **DTOs** para evitar ciclos en JSON y un **Mapper** para convertir en
 ## 🔹 Características
 
 - CRUD completo para **Usuarios, Gastos e Ingresos**.  
-- Persistencia en **SQLite (`gastos.db`)**.  
-- Evita ciclos en JSON usando **DTOs y Mapper**.  
+- Persistencia en **SQLite (`gastos.db`)**.   
 - Filtros opcionales por usuario:  
   - `/api/gastos?usuarioId=1`  
   - `/api/ingresos?usuarioId=1`  
 - Swagger para probar endpoints automáticamente.  
-- Datos de prueba incluidos al iniciar la app (usuarios, gastos e ingresos).
+
+![Vista previa](images/demo.png)
+
 
 ---
 
