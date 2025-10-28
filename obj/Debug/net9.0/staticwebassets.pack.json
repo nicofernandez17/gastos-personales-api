@@ -17,6 +17,10 @@
       "PackagePath": "staticwebassets\\js\\app.js"
     },
     {
+      "Id": "F:\\Shared\\GastosPersonalesApi\\wwwroot\\js\\gastosChart.js",
+      "PackagePath": "staticwebassets\\js\\gastosChart.js"
+    },
+    {
       "Id": "F:\\Shared\\GastosPersonalesApi\\wwwroot\\navbar.html",
       "PackagePath": "staticwebassets\\navbar.html"
     },

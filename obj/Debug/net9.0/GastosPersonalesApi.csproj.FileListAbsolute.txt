@@ -161,5 +161,6 @@ F:\Shared\GastosPersonalesApi\bin\Debug\net9.0\GastosPersonalesApi.staticwebasse
 F:\Shared\GastosPersonalesApi\obj\Debug\net9.0\compressed\d59n1gqz70-1xljwrpb5e.gz
 F:\Shared\GastosPersonalesApi\obj\Debug\net9.0\compressed\cz7gdsi5z0-j6ec0rqc50.gz
 F:\Shared\GastosPersonalesApi\obj\Debug\net9.0\compressed\qbkijsv1q5-y1vw9ciuej.gz
-F:\Shared\GastosPersonalesApi\obj\Debug\net9.0\compressed\ork2ftcx3d-xwm9kkdxwb.gz
-F:\Shared\GastosPersonalesApi\obj\Debug\net9.0\compressed\399pfuotu5-rskav4v65i.gz
+F:\Shared\GastosPersonalesApi\obj\Debug\net9.0\compressed\ork2ftcx3d-xg0rm1oj2y.gz
+F:\Shared\GastosPersonalesApi\obj\Debug\net9.0\compressed\399pfuotu5-iq51km4mkm.gz
+F:\Shared\GastosPersonalesApi\obj\Debug\net9.0\compressed\9q67oz5vgo-hxbeu9wlxa.gz

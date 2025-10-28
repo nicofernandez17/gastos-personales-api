@@ -66,11 +66,29 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>xwm9kkdxwb</Fingerprint>
-      <Integrity>QVAy7SN0vFggtvQmKzIqS1di1R/dBSh6dAusI2bltLk=</Integrity>
+      <Fingerprint>xg0rm1oj2y</Fingerprint>
+      <Integrity>IfUDBg6yw7s8yyWPMHXypW0JahncLudKjT02GnExn7I=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\app.js'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\gastosChart.js'))">
+      <SourceType>Package</SourceType>
+      <SourceId>GastosPersonalesApi</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/GastosPersonalesApi</BasePath>
+      <RelativePath>js/gastosChart.js</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>hxbeu9wlxa</Fingerprint>
+      <Integrity>G+pOCUtyrMOaPhyWMxCOuNNfSOMvEJJMfBf1Cuvv1nk=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\gastosChart.js'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\navbar.html'))">
       <SourceType>Package</SourceType>
@@ -102,8 +120,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>rskav4v65i</Fingerprint>
-      <Integrity>Nfl9fTGhVnL7AVO6u6S6qBcmKOx4XTCpScL9f6xRN7A=</Integrity>
+      <Fingerprint>iq51km4mkm</Fingerprint>
+      <Integrity>Sj+dWYN7CXQw5dCvA40XNsMZ7abNtQA11ypuOQ7uPYE=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\usuario.html'))</OriginalItemSpec>

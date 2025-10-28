@@ -1,3 +1,5 @@
+// app.js - maneja usuarios, gastos e ingresos y actualiza el gráfico cuando corresponde
+
 const apiUrl = "http://localhost:5235/api";
 
 // Obtener usuarioId de la URL si existe
@@ -9,6 +11,7 @@ const usuarioId = parseInt(new URLSearchParams(window.location.search).get("usua
 async function fetchUsuarios() {
     try {
         const res = await fetch(`${apiUrl}/usuarios`);
+        if (!res.ok) throw new Error(`Error ${res.status}`);
         const usuarios = await res.json();
         const list = document.getElementById("usuariosList");
         if (!list) return;
@@ -18,7 +21,7 @@ async function fetchUsuarios() {
             const li = document.createElement("li");
             li.className = "list-group-item d-flex justify-content-between align-items-center";
             li.innerHTML = `
-                ${u.nombre} 
+                ${escapeHtml(u.nombre)} 
                 <a href="usuario.html?usuarioId=${u.id}" class="btn btn-sm btn-primary">Ver detalles</a>
             `;
             list.appendChild(li);
@@ -36,47 +39,100 @@ async function fetchUsuario(id) {
         const usuario = await res.json();
         const nombreElem = document.getElementById("usuarioNombre");
         if (nombreElem) nombreElem.innerText = usuario.nombre;
+        return usuario;
     } catch (err) {
-        alert(err.message);
+        console.error("fetchUsuario:", err);
+        // no hago alert para no molestar si se llama automáticamente
+        return null;
     }
 }
 
-// Cargar gastos por usuario
+// Cargar gastos por usuario (intenta endpoint /api/gastos?usuarioId=..., si falla usa /api/usuarios/{id})
 async function fetchGastos(usuarioId) {
     try {
-        const res = await fetch(`${apiUrl}/gastos?usuarioId=${usuarioId}`);
-        const gastos = await res.json();
+        let gastos = [];
+        // primero intento endpoint directo (si existe en tu API)
+        let res = await fetch(`${apiUrl}/gastos?usuarioId=${usuarioId}`);
+        if (res.ok) {
+            gastos = await res.json();
+        } else {
+            // fallback: pedir el usuario y obtener usuario.gastos
+            res = await fetch(`${apiUrl}/usuarios/${usuarioId}`);
+            if (!res.ok) throw new Error("No se pudieron cargar los gastos (usuario).");
+            const usuario = await res.json();
+            gastos = usuario.gastos || [];
+        }
+
         const tbody = document.querySelector("#gastosTable tbody");
         if (!tbody) return;
 
         tbody.innerHTML = "";
         gastos.forEach(g => {
             const tr = document.createElement("tr");
-            tr.innerHTML = `<td>${g.descripcion}</td><td>${g.monto}</td><td>${g.categoria}</td>`;
+            tr.innerHTML = `<td>${escapeHtml(g.descripcion)}</td><td>${formatNumber(g.monto)}</td><td>${escapeHtml(g.categoria || '')}</td>`;
             tbody.appendChild(tr);
         });
+
+        // Si el módulo del gráfico está cargado, actualizarlo
+        if (window.renderGastosChart) {
+            try { window.renderGastosChart(usuarioId, gastos); } catch (err) { console.warn("renderGastosChart falló:", err); }
+        }
+
+        return gastos;
     } catch (err) {
         console.error("Error cargando gastos:", err);
+        return [];
     }
 }
 
-// Cargar ingresos por usuario
+// Cargar ingresos por usuario (similar a gastos)
 async function fetchIngresos(usuarioId) {
     try {
-        const res = await fetch(`${apiUrl}/ingresos?usuarioId=${usuarioId}`);
-        const ingresos = await res.json();
+        // intento endpoint /api/ingresos?usuarioId=...
+        let res = await fetch(`${apiUrl}/ingresos?usuarioId=${usuarioId}`);
+        let ingresos = [];
+        if (res.ok) {
+            ingresos = await res.json();
+        } else {
+            // fallback a usuario endpoint
+            res = await fetch(`${apiUrl}/usuarios/${usuarioId}`);
+            if (!res.ok) throw new Error("No se pudieron cargar los ingresos (usuario).");
+            const usuario = await res.json();
+            ingresos = usuario.ingresos || [];
+        }
+
         const tbody = document.querySelector("#ingresosTable tbody");
         if (!tbody) return;
 
         tbody.innerHTML = "";
         ingresos.forEach(i => {
             const tr = document.createElement("tr");
-            tr.innerHTML = `<td>${i.descripcion}</td><td>${i.monto}</td>`;
+            tr.innerHTML = `<td>${escapeHtml(i.descripcion)}</td><td>${formatNumber(i.monto)}</td>`;
             tbody.appendChild(tr);
         });
+
+        return ingresos;
     } catch (err) {
         console.error("Error cargando ingresos:", err);
+        return [];
     }
+}
+
+// ------------------- HELPERS -------------------
+
+function escapeHtml(unsafe) {
+    if (unsafe == null) return "";
+    return String(unsafe)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+}
+
+function formatNumber(n) {
+    if (n == null) return "";
+    return Number(n).toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 2 });
 }
 
 // ------------------- EVENTOS -------------------
@@ -99,8 +155,8 @@ document.addEventListener("DOMContentLoaded", () => {
 // Crear usuario
 document.getElementById("formUsuario")?.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const nombre = document.getElementById("nombreUsuario").value;
-    const email = document.getElementById("emailUsuario").value;
+    const nombre = document.getElementById("nombreUsuario").value.trim();
+    const email = document.getElementById("emailUsuario").value.trim();
 
     try {
         const res = await fetch(`${apiUrl}/usuarios`, {
@@ -112,22 +168,31 @@ document.getElementById("formUsuario")?.addEventListener("submit", async (e) => 
         if (res.ok) {
             document.getElementById("nombreUsuario").value = "";
             document.getElementById("emailUsuario").value = "";
+            // refrescar lista y cambiar a pestaña lista si existe
             fetchUsuarios();
+            const tabListaElem = document.getElementById("tab-lista");
+            if (tabListaElem) new bootstrap.Tab(tabListaElem).show();
         } else {
-            const error = await res.json();
-            alert("Error al crear usuario: " + (error?.message || res.statusText));
+            const errorText = await safeParseError(res);
+            alert("Error al crear usuario: " + errorText);
         }
     } catch (err) {
         console.error("Error creando usuario:", err);
+        alert("Error creando usuario (ver consola).");
     }
 });
 
 // Crear gasto
 document.getElementById("formGasto")?.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const descripcion = document.getElementById("descGasto").value;
+    const descripcion = document.getElementById("descGasto").value.trim();
     const monto = parseFloat(document.getElementById("montoGasto").value);
     const categoria = document.getElementById("categoriaGasto")?.value || "Otro";
+
+    if (isNaN(monto)) {
+        alert("Monto inválido");
+        return;
+    }
 
     try {
         const res = await fetch(`${apiUrl}/gastos`, {
@@ -139,21 +204,29 @@ document.getElementById("formGasto")?.addEventListener("submit", async (e) => {
         if (res.ok) {
             document.getElementById("descGasto").value = "";
             document.getElementById("montoGasto").value = "";
-            fetchGastos(usuarioId);
+            document.getElementById("categoriaGasto").value = "Alimentos";
+            // refrescar tabla y gráfico
+            await fetchGastos(usuarioId);
         } else {
-            const error = await res.json();
-            alert("Error al crear gasto: " + (error?.message || res.statusText));
+            const errorText = await safeParseError(res);
+            alert("Error al crear gasto: " + errorText);
         }
     } catch (err) {
         console.error("Error creando gasto:", err);
+        alert("Error creando gasto (ver consola).");
     }
 });
 
 // Crear ingreso
 document.getElementById("formIngreso")?.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const descripcion = document.getElementById("descIngreso").value;
+    const descripcion = document.getElementById("descIngreso").value.trim();
     const monto = parseFloat(document.getElementById("montoIngreso").value);
+
+    if (isNaN(monto)) {
+        alert("Monto inválido");
+        return;
+    }
 
     try {
         const res = await fetch(`${apiUrl}/ingresos`, {
@@ -165,13 +238,23 @@ document.getElementById("formIngreso")?.addEventListener("submit", async (e) => 
         if (res.ok) {
             document.getElementById("descIngreso").value = "";
             document.getElementById("montoIngreso").value = "";
-            fetchIngresos(usuarioId);
+            await fetchIngresos(usuarioId);
         } else {
-            const error = await res.json();
-            alert("Error al crear ingreso: " + (error?.message || res.statusText));
+            const errorText = await safeParseError(res);
+            alert("Error al crear ingreso: " + errorText);
         }
     } catch (err) {
         console.error("Error creando ingreso:", err);
+        alert("Error creando ingreso (ver consola).");
     }
 });
+
+// Helper para parsear cuerpo de error si viene JSON o texto
+async function safeParseError(res) {
+    try {
+        const txt = await res.text();
+        try { const j = JSON.parse(txt); return j?.message || txt; } catch { return txt; }
+    } catch { return res.statusText || "Error"; }
+}
+
 

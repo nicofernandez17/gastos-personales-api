@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GastosPersonalesApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+126c3552ef038fc8b14147ed33c85c90e09745c7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ba00213750684c34f57d371f241c4d304e6f540a")]
 [assembly: System.Reflection.AssemblyProductAttribute("GastosPersonalesApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GastosPersonalesApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

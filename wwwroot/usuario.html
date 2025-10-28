@@ -22,11 +22,11 @@
     <div class="row g-4">
         <!-- Columna izquierda: gráfico y tablas -->
         <div class="col-md-6">
-            <!-- Gráfico (vacío por ahora) -->
+            <!-- Gráfico -->
             <div class="card mb-3" style="border: 2px solid #ffcd00;">
                 <div class="card-header" style="background-color: #ffcd00; color:#3d405b;">Distribución de Gastos</div>
                 <div class="card-body">
-                    <!-- Gráfico se agregará aquí -->
+                    <canvas id="gastosChart"></canvas>
                 </div>
             </div>
 
@@ -91,8 +91,8 @@
         </div>
     </div>
 </div>
-
-<!-- JS personalizado -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="js/app.js"></script>
+<script src="js/gastosChart.js"></script>
 </body>
 </html>
