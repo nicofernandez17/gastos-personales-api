@@ -13,7 +13,10 @@ Cuenta con **DTOs** para evitar ciclos en JSON y un **Mapper** para convertir en
 - Filtros opcionales por usuario:  
   - `/api/gastos?usuarioId=1`  
   - `/api/ingresos?usuarioId=1`  
-- Swagger para probar endpoints automáticamente.  
+- Swagger para probar endpoints automáticamente.
+
+  
+<img width="1747" height="872" alt="demo" src="https://github.com/user-attachments/assets/dc2687f3-b745-4bed-8177-1db1ac867d45" />
 
 ---
 
